@@ -18,6 +18,7 @@
   "homepage": "https://github.com/tier1machines/t-recs#readme",
   "dependencies": {
     "amqplib": "^0.5.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "pg": "^7.17.0"
   }
 }
