@@ -7,10 +7,13 @@ amqp.connect(CONN_URL, function (err, conn) {
 	console.log('Error: ', err);
   };
   conn.createChannel(function (err, ch) {
-    ch.consume('virtualgroove-app', function (msg) {
+	let reco;
+    ch.consume('virtualgroove-app', async function (msg) {
 	  console.log('.....');
-	  trecs(msg);
+	  reco = await trecs(msg);
+	  console.log('reco', reco);
+	  ch.sendToQueue('t-recs', new Buffer.from(reco));
       },{ noAck: true }
-    );
+	);
   });
 });
